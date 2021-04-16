@@ -1,4 +1,4 @@
-"""Implementation of insertion various algorithms with test cases.
+"""Implementation of various sort algorithms with test cases.
 """
 
 import random
@@ -6,7 +6,7 @@ import random
 
 def insertion_sort(lst):
     """Sorts a list of integers from smallest to largest.
-    
+
     Runtime: O(N^2)
 
     Args:
@@ -40,35 +40,31 @@ def merge_sort(lst):
         llst, rlst = lst[:mid], lst[mid:]
         merge_sort(llst)
         merge_sort(rlst)
-        i, l, r = 0, 0, 0
-        while l < len(llst) or r < len(rlst):
-            lval = llst[l] if l < len(llst) else float('inf')
-            rval = rlst[r] if r < len(rlst) else float('inf')
+        i, j, k = 0, 0, 0
+        while j < len(llst) or k < len(rlst):
+            lval = llst[j] if j < len(llst) else float('inf')
+            rval = rlst[k] if k < len(rlst) else float('inf')
             if lval <= rval:
                 lst[i] = lval
-                l += 1
+                j += 1
             else:
                 lst[i] = rval
-                r += 1
+                k += 1
             i += 1
 
-    
+
 def sort_tester(sort):
     """Function for testing sort methods.
     """
-    lst = [11,14,16,9,15,20]
-    print(lst)
-    sort(lst)
-    print(lst)
-    lst1 = [4, 15, 12, 3, 10, 6]
-    print(lst1)
-    sort(lst1)
-    print(lst1)
-    rand_lst = [random.randint(0, 50) for i in range(15)]
-    print(rand_lst)
-    sort(rand_lst)
-    print(rand_lst)
-    
+    def sort_test_helper(lst):
+        print(lst)
+        sort(lst)
+        print(lst)
+
+    sort_test_helper([11,14,16,9,15,20])
+    sort_test_helper([4, 15, 12, 3, 10, 6])
+    sort_test_helper([random.randint(0, 50) for i in range(15)])
+
 
 def main():
     """Main function for testing various sort methods.
