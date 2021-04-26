@@ -54,9 +54,19 @@ def merge_sort(lst):
 
 
 def heap_sort(lst):
+    """Runs heap sort algorithm contained in hand-written heap module.
+
+    Runtime: O(N * log(N))
+
+    Args:
+        lst: A list of integers
+
+    Returns:
+        None
+    """
     heap = importlib.import_module('heap')
-    hp = heap.Heap(lst)
-    hp.heap_sort()
+    my_heap = heap.Heap(lst)
+    my_heap.heap_sort()
 
 
 def sort_tester(sort):
