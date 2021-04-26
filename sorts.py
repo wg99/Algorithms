@@ -2,7 +2,7 @@
 """
 
 import random
-
+import importlib
 
 def insertion_sort(lst):
     """Sorts a list of integers from smallest to largest.
@@ -53,6 +53,12 @@ def merge_sort(lst):
             i += 1
 
 
+def heap_sort(lst):
+    heap = importlib.import_module('heap')
+    hp = heap.Heap(lst)
+    hp.heap_sort()
+
+
 def sort_tester(sort):
     """Function for testing sort methods.
     """
@@ -69,7 +75,7 @@ def sort_tester(sort):
 def main():
     """Main function for testing various sort methods.
     """
-    sort_tester(merge_sort)
+    sort_tester(heap_sort)
 
 
 if __name__ == '__main__':
