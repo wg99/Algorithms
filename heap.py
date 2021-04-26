@@ -21,9 +21,17 @@ class Heap:
             A[i], A[largest] = A[largest], A[i]
             self.max_heapify(A, largest)
 
+    def build_max_heap(self, A):
+        mid_point = len(A) // 2 - 1
+        for i in range(mid_point, -1, -1):
+            self.max_heapify(A, i)
+
 
 if __name__ == '__main__':
     hp = Heap()
     A = [16, 4, 10, 14, 7, 9, 3, 2, 8, 1]
     hp.max_heapify(A, 1)
+    print(A)
+    A = [4, 1, 3, 2, 16, 9, 10, 14, 8, 7]
+    hp.build_max_heap(A)
     print(A)
