@@ -3,6 +3,7 @@
 
 import random
 import importlib
+import heapq
 
 def insertion_sort(lst):
     """Sorts a list of integers from smallest to largest.
@@ -69,6 +70,25 @@ def heap_sort(lst):
     my_heap.heap_sort()
 
 
+def heap_sort2(lst):
+    """Heap sort algorithm from official python docs using standard
+    heap module. https://docs.python.org/3/library/heapq.html
+
+    Runtime: O(N * log(N))
+
+    Args:
+        lst: A list of integers
+
+    Returns:
+        None
+    """
+    heap = []
+    for val in lst:
+        heapq.heappush(heap, val)
+    for i in range(len(heap)):
+        lst[i] = heapq.heappop(heap)
+
+
 def sort_tester(sort):
     """Function for testing sort methods.
     """
@@ -85,7 +105,7 @@ def sort_tester(sort):
 def main():
     """Main function for testing various sort methods.
     """
-    sort_tester(heap_sort)
+    sort_tester(heap_sort2)
 
 
 if __name__ == '__main__':
