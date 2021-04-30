@@ -96,22 +96,27 @@ def quick_sort(lst):
         Worst Case: O(N^2)
         Avg. Case: O(N*log(N))
     """
-    def partition(l, r):
-        p = lst[r]
-        i = l - 1
-        for j in range(l, r):
-            if lst[j] <= p:
+    def partition(left, right):
+        pivot = lst[right]
+        i = left - 1
+        for j in range(left, right):
+            if lst[j] <= pivot:
                 i += 1
                 lst[j], lst[i] = lst[i], lst[j]
-        lst[i + 1], lst[r] = lst[r], lst[i + 1]
+        lst[i + 1], lst[right] = lst[right], lst[i + 1]
         return i + 1
 
-    def quick_sort_helper(l, r):
-        if l < r:
-            p = partition(l, r)
-            quick_sort_helper(l, p - 1)
-            quick_sort_helper(p + 1, r)
-    
+    def randomized_partition(left, right):
+        i = random.randint(left, right)
+        lst[i], lst[right] = lst[right], lst[i]
+        return partition(left, right)
+
+    def quick_sort_helper(left, right):
+        if left < right:
+            pivot = randomized_partition(left, right)
+            quick_sort_helper(left, pivot - 1)
+            quick_sort_helper(pivot + 1, right)
+
     quick_sort_helper(0, len(lst) - 1)
 
 
