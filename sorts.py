@@ -89,6 +89,32 @@ def heap_sort2(lst):
         lst[i] = heapq.heappop(heap)
 
 
+def quick_sort(lst):
+    """Implementation of quick sort algorithm.
+
+    Runtime:
+        Worst Case: O(N^2)
+        Avg. Case: O(N*log(N))
+    """
+    def partition(l, r):
+        p = lst[r]
+        i = l - 1
+        for j in range(l, r):
+            if lst[j] <= p:
+                i += 1
+                lst[j], lst[i] = lst[i], lst[j]
+        lst[i + 1], lst[r] = lst[r], lst[i + 1]
+        return i + 1
+
+    def quick_sort_helper(l, r):
+        if l < r:
+            p = partition(l, r)
+            quick_sort_helper(l, p - 1)
+            quick_sort_helper(p + 1, r)
+    
+    quick_sort_helper(0, len(lst) - 1)
+
+
 def sort_tester(sort):
     """Function for testing sort methods.
     """
@@ -105,7 +131,7 @@ def sort_tester(sort):
 def main():
     """Main function for testing various sort methods.
     """
-    sort_tester(heap_sort2)
+    sort_tester(quick_sort)
 
 
 if __name__ == '__main__':
