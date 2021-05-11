@@ -2,7 +2,7 @@
 problem"""
 
 def find_maximum_subarray(lst):
-    '''Searches a sequence and finds the subarray with the largest sum.
+    """Searches a sequence and finds the subarray with the largest sum.
     Uses a divide and conquer approach.
 
     Runtime: O(N * log(N))
@@ -14,7 +14,7 @@ def find_maximum_subarray(lst):
         A tuple of three integers representing the starting index, the
         ending index, and the sum of all of the values in the
         found subarray.
-    '''
+    """
 
     def find_max_crossing_subarray(lst, low, mid, high):
         left_sum = float('-inf')
