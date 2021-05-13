@@ -21,6 +21,17 @@ def minimum(lst):
 
 
 def randomized_select(lst, i):
+    """Finds ith smallest number from a list of numbers.
+
+    Input:
+        lst: A sequence of numbers
+        i: Number representing which order statistic
+        the algorithm is searching for.
+
+    Returns: The ith smallest number in the list.
+
+    Runtime: O(N)
+    """
     def partition(left, right):
         pivot = lst[right]
         i = left - 1
@@ -43,10 +54,9 @@ def randomized_select(lst, i):
         k = pivot - left + 1
         if i == k:
             return lst[pivot]
-        elif i < k:
+        if i < k:
             return randomized_select_helper(left, pivot - 1, i)
-        else:
-            return randomized_select_helper(pivot + 1, right, i - k)
+        return randomized_select_helper(pivot + 1, right, i - k)
 
     return randomized_select_helper(0, len(lst) - 1, i)
 
